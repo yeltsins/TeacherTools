@@ -22,7 +22,7 @@ namespace TeacherTools
     {
         public MainWindow()
         {
-        // Comment 2
+        // Comment 3
             InitializeComponent();
         }
     }
