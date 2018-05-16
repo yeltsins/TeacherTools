@@ -5,8 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TeacherTools"
         mc:Ignorable="d"
-        Title="Teacher Tools" Height="350" Width="525">
+        Title="Teacher Tools" Height="153.5" Width="525">
     <Grid>
-        
+        <Button Content="Обзор" HorizontalAlignment="Left" Margin="387,10,0,0" VerticalAlignment="Top" Width="120" Click="xlsFileChoose" Height="23"/>
+        <TextBox Name="xlsPath"  HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" TextWrapping="NoWrap" Text="Путь к файлу со списком билетов" VerticalAlignment="Top" Width="369" MaxLines="1" TextAlignment="Right"/>
+        <Button Content="Сформировать билеты" HorizontalAlignment="Left" Margin="363,81,0,0" VerticalAlignment="Top" Width="144" Click="createQuestions" Height="21"/>
+        <TextBox x:Name="wordPath"  HorizontalAlignment="Left" Height="23" Margin="10,38,0,0" TextWrapping="NoWrap" Text="Путь к файлу с шаблоном билета" VerticalAlignment="Top" Width="369" MaxLines="1" TextAlignment="Right"/>
+        <Button Content="Обзор" HorizontalAlignment="Left" Margin="387,38,0,0" VerticalAlignment="Top" Width="120" Click="wordFileChoose" Height="23"/>
+        <CheckBox Name="ignoreTopic" Content="Игнорировать разделы вопросов" HorizontalAlignment="Left" Margin="10,81,0,0" VerticalAlignment="Top"/>
+
     </Grid>
 </Window>
