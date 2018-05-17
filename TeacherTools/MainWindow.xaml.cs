@@ -32,8 +32,8 @@ namespace TeacherTools
 
             InitializeComponent();
 
-            //xlsPath.Text = @"C:\Users\MediaMarkt\Google Диск\Навигация роботов\Рабочая программа\Вопросы к экзамену.xlsx";
-            //wordPath.Text = @"C:\Users\MediaMarkt\Google Диск\Навигация роботов\Рабочая программа\Экзаменационные билеты.docx";
+            xlsPath.Text = @"C:\Users\MediaMarkt\Google Диск\Навигация роботов\Рабочая программа\Вопросы к экзамену.xlsx";
+            wordPath.Text = @"C:\Users\MediaMarkt\Google Диск\Навигация роботов\Рабочая программа\Экзаменационные билеты.docx";
 
 
         }
@@ -105,10 +105,17 @@ namespace TeacherTools
             //Определяем комбинации билетов
             for(i=1;i<= numQuest; i++)
             {
-                int r = rnd.Next(Questions.Count);
-                var firstQ = Questions[r];
+                var firstQ = Questions[rnd.Next(Questions.Count)];
+                var secondQ = firstQ;
                 Questions.RemoveAll(a => a.Item1 == firstQ.Item1);
-                var secondQ = Questions.FindAll(a => a.Item2 != firstQ.Item2)[rnd.Next(Questions.FindAll(b => b.Item2 != firstQ.Item2).Count())];
+                if (Questions.FindAll(a => a.Item2 != firstQ.Item2).Count == 0)
+                {
+                    secondQ = Questions[rnd.Next(Questions.Count)];
+                }
+                else
+                {
+                    secondQ = Questions.FindAll(a => a.Item2 != firstQ.Item2)[rnd.Next(Questions.FindAll(b => b.Item2 != firstQ.Item2).Count())];
+                }
                 Questions.RemoveAll(a => a.Item1 == secondQ.Item1);
                 Bilets.Add((firstQ.Item3, secondQ.Item3));
                 
@@ -218,6 +225,8 @@ namespace TeacherTools
             app.ActiveDocument.SaveAs2(wordPath.Text.Remove(wordPath.Text.Count()-5,5) +"_generated.docx");
             app.ActiveDocument.Close();
             app.Quit();
+
+            MessageBox.Show("Файл с билетами сгенерирован.");
             
         }
 
